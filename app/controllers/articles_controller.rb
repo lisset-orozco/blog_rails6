@@ -2,13 +2,21 @@
 
 # articles - blog
 class ArticlesController < ApplicationController
-  before_action :set_article, only: :show
+  before_action :set_article, only: %i[show edit update]
 
   def index
     render json: Article.all
   end
 
   def show; end
+
+  def edit; end
+
+  def update
+    @article.update(article_params)
+
+    redirect_to  @article
+  end
 
   def new
     @article = Article.new
