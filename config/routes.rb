@@ -3,10 +3,12 @@ Rails.application.routes.draw do
   root 'home#index'
 
   get 'articles/new', to: 'articles#new'
-  post 'articles', to: 'articles#create'
   get 'articles/:id', to: 'articles#show'
   get 'articles/:id/edit', to: 'articles#edit'
   get 'articles', to: 'articles#index'
+
+  post 'articles', to: 'articles#create'  
   patch 'articles/:id', to: 'articles#update', as: :article
+  delete 'articles/:id', to: 'articles#destroy'
   # resources :articles
 end
