@@ -13,7 +13,7 @@ class Article < ApplicationRecord
     # convertir eso en un arreglo 1,2,3 => [1,2,3]
     # categories_array = category_elements.split(',')
     # iterar el arreglo
-    categories_array.each do |category_id|
+    category_elements.each do |category_id|
       # crear HasCategory
       # unless HasCategory.create(article: self, category_id: category_id).any?
       #   HasCategory.create(article: self, category_id: category_id)

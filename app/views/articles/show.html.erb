@@ -11,6 +11,15 @@
     <p> Article not found</p>
   <% end %>
 
+  <div class="margin-top">
+    <p class="label">Tags</p>
+    <% @article.categories.each do |category| %>
+      <span class="badge badge-pill padding" style="background-color: <%= category.color %>">
+        <%= link_to category.title, category, class:"text-white" %>
+      </span>
+    <% end %>
+  </div>
+
   <% if @article.user == current_user %>
     <div>
       <%= link_to 'Delete article', @article, method: :delete, data: { confirm: '¿are you sure? This action can not be undone'} %><br/>
