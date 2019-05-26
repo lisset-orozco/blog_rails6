@@ -4,7 +4,7 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: %i[show edit update destroy]
   before_action :authenticate_user!, except: %i[index show]
-  before_action :set_categories, only: %i[new edity]
+  before_action :set_categories, only: %i[new edit]
 
   def index
     @articles = Article.all.order(id: :desc)
