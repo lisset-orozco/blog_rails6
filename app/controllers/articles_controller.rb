@@ -6,7 +6,7 @@ class ArticlesController < ApplicationController
   before_action :authenticate_user!, except: %i[index show]
 
   def index
-    @articles = Article.all
+    @articles = Article.all.order(id: :desc)
   end
 
   def show; end
@@ -25,9 +25,10 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new(article_params)
+    # current_user.articles.new(article_params)
 
     if @article.save
-      render json: @article
+      redirect_to @article
     else
       render 'new'
     end
@@ -44,7 +45,7 @@ class ArticlesController < ApplicationController
     params.require(:article).permit(
       :title,
       :content
-    )
+    ).merge(user_id: current_user.id) # optional
   end
 
   def set_article

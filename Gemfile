@@ -43,7 +43,6 @@ group :development, :test do
   gem 'factory_bot_rails', '~> 5.0', '>= 5.0.2'
   #  is used to easily generate fake data
   gem 'faker', '~> 1.9', '>= 1.9.3'
-  gem 'pry-byebug', '~> 3.7'
   # Use Pry as your rails console
   gem 'pry-rails', '~> 0.3.9'
   # rspec-rails is a testing framework for Rails
