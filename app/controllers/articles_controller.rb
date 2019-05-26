@@ -4,6 +4,7 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: %i[show edit update destroy]
   before_action :authenticate_user!, except: %i[index show]
+  before_action :set_categories, only: %i[new edity]
 
   def index
     @articles = Article.all.order(id: :desc)
@@ -51,11 +52,15 @@ class ArticlesController < ApplicationController
     params.require(:article).permit(
       :title,
       :content,
-      :category_elements
+      category_elements: []
     ).merge(user_id: current_user.id) # optional
   end
 
   def set_article
     @article = Article.find_by_id(params[:id])
+  end
+
+  def set_categories
+    @categories = Category.all
   end
 end

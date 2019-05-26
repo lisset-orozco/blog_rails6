@@ -11,7 +11,7 @@ class Article < ApplicationRecord
   def save_categories
     # category_elements 1, 2, 3
     # convertir eso en un arreglo 1,2,3 => [1,2,3]
-    categories_array = category_elements.split(',')
+    # categories_array = category_elements.split(',')
     # iterar el arreglo
     categories_array.each do |category_id|
       # crear HasCategory
