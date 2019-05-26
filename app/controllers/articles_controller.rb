@@ -15,6 +15,7 @@ class ArticlesController < ApplicationController
 
   def update
     @article.update(article_params)
+    @article.save_categories
 
     redirect_to @article
   end
@@ -26,6 +27,7 @@ class ArticlesController < ApplicationController
   def create
     @article = Article.new(article_params)
     # current_user.articles.new(article_params)
+    @article.save_categories
 
     if @article.save
       redirect_to @article
@@ -48,7 +50,8 @@ class ArticlesController < ApplicationController
   def article_params
     params.require(:article).permit(
       :title,
-      :content
+      :content,
+      :category_elements
     ).merge(user_id: current_user.id) # optional
   end
 
