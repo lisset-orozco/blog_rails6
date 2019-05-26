@@ -39,6 +39,10 @@ class ArticlesController < ApplicationController
     redirect_to articles_path
   end
 
+  def from_author
+    @user = User.find_by_id(params[:user_id])
+  end
+
   private
 
   def article_params
